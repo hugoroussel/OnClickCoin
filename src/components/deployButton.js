@@ -3,6 +3,9 @@ import deployContract from "../utils/deployContract";
 
 class DeployButton extends Component {
   handleClick(event) {
+    const formInfo = document.getElementById("constructorForm")
+    const name = formInfo[0].value
+      console.log(name)
     deployContract();
   }
 

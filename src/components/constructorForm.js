@@ -8,6 +8,7 @@ class constructorForm extends Component {
                     Name:<input id= "name" placeholder="Bitconnect"/><br></br>
                     Ticker:<input id="ticker" placeholder="BCC"/><br></br>
                     Owner:<input id="owner" placeholder="0xabc..."/><br></br>
+                    Supply:<input id="supply" placeholder="21000000"/><br></br>
                 </form>
             </div>
         );
