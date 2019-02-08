@@ -5,8 +5,11 @@ class DeployButton extends Component {
   handleClick(event) {
     const formInfo = document.getElementById("constructorForm")
     const name = formInfo[0].value
-      console.log(name)
-    deployContract();
+    const ticker = formInfo[1].value
+    const owner = formInfo[2].value
+    const supply = formInfo [3].value
+
+    deployContract(name, ticker, owner, supply);
   }
 
   render() {

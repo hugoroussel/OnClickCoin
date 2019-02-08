@@ -2,15 +2,23 @@ import {endpoint, sendAddress, gasPrice, gasLimit, chainId} from '../config/conf
 import bytecode from "../contracts/basicContract"
 const Web3 = require("web3");
 
-async function buildDeployment() {
+async function buildDeployment(name, ticker, owner, supply) {
   var netID = document.getElementById("network");
   var network = netID.options[netID.selectedIndex].value;
   const web3 = new Web3(new Web3.providers.HttpProvider(endpoint[network]));
 
+  const nameB = web3.utils.toHex(name)
+  const tickerB = web3.utils.toHex(ticker)
+  const ownerB = web3.utils.toHex(owner)
+  const supplyB = web3.utils.toHex(supply)
+
+  console.log("constructor parameters", nameB+tickerB+ownerB+supplyB)
+
+
   const bcode =
-  "0x" + bytecode.bytecode;
-  console.log(typeof(bytecode.bytecode))
-  //console.log("bcode", bcode)
+  "0x" + bytecode.bytecode+nameB+tickerB+ownerB+supplyB;
+  console.log(bcode)
+
 
   var nonce = await web3.eth.getTransactionCount(sendAddress, 'pending');
   var gasP = web3.utils.toHex(gasPrice);

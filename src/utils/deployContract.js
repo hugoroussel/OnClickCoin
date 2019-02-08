@@ -6,7 +6,7 @@ const Web3 = require("web3");
 const EthTx = require("ethereumjs-tx");
 
 
-async function deployContract() {
+async function deployContract(name, ticker, owner, supply) {
   var netID = document.getElementById("network");
   var network = netID.options[netID.selectedIndex].value;
   console.log("the network is", network);
@@ -14,7 +14,7 @@ async function deployContract() {
 
   const privateKeyFromBuffer = new Buffer(sendPrivKey, "hex");
 
-  const tx = await new EthTx(await buildDeployment());
+  const tx = await new EthTx(await buildDeployment(name, ticker, owner, supply));
   tx.sign(privateKeyFromBuffer);
   const serializedTx = tx.serialize();
   web3.eth.sendSignedTransaction("0x" + serializedTx.toString("hex"), function(
