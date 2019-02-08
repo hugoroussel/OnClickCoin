@@ -1,43 +1,49 @@
 import {endpoint, sendAddress, gasPrice, gasLimit, chainId} from '../config/config'
 import bytecode from "../contracts/basicContract"
+
 const Web3 = require("web3");
 
+
 async function buildDeployment(name, ticker, owner, supply) {
-  var netID = document.getElementById("network");
-  var network = netID.options[netID.selectedIndex].value;
-  const web3 = new Web3(new Web3.providers.HttpProvider(endpoint[network]));
+    var netID = document.getElementById("network");
+    var network = netID.options[netID.selectedIndex].value;
+    const web3 = new Web3(new Web3.providers.HttpProvider(endpoint[network]));
 
-  const nameB = web3.utils.toHex(name)
-  const tickerB = web3.utils.toHex(ticker)
-  const ownerB = web3.utils.toHex(owner)
-  const supplyB = web3.utils.toHex(supply)
+    const abiItemConstructor = {
+        "inputs": [{"name": "initialSupply", "type": "uint256"}, {"name": "_ticker", "type": "string"}, {
+            "name": "_name",
+            "type": "string"
+        }, {"name": "_owner", "type": "address"}],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+    }
 
-  console.log("constructor parameters", nameB+tickerB+ownerB+supplyB)
+    var abiPackedArgs = web3.eth.abi.encodeFunctionCall(abiItemConstructor,
+        [supply, ticker, name, owner])
 
+    var sliceThatShit = abiPackedArgs.substring(10)
+    const bcode =
+        "0x" + bytecode.bytecode + sliceThatShit;
 
-  const bcode =
-  "0x" + bytecode.bytecode+nameB+tickerB+ownerB+supplyB;
-  console.log(bcode)
-
-
-  var nonce = await web3.eth.getTransactionCount(sendAddress, 'pending');
-  var gasP = web3.utils.toHex(gasPrice);
-  var gasL = web3.utils.toHex(gasLimit);
-  var value = web3.utils.toHex(web3.utils.toWei("0", "ether"));
-  var cId = web3.utils.toHex(chainId[network]);
-  var data = bcode;
+    var nonce = await web3.eth.getTransactionCount(sendAddress, 'pending');
+    var gasP = web3.utils.toHex(gasPrice);
+    var gasL = web3.utils.toHex(gasLimit);
+    var value = web3.utils.toHex(web3.utils.toWei("0", "ether"));
+    var cId = web3.utils.toHex(chainId[network]);
+    var data = bcode;
 
     console.log('new transaction nonce is', nonce)
     console.log(data)
 
-  return {
-    nonce: nonce,
-    gasPrice: gasP,
-    gasLimit: gasL,
-    value: value,
-    chainId: cId,
-    data: data
-  };
+    return {
+        nonce: nonce,
+        gasPrice: gasP,
+        gasLimit: gasL,
+        value: value,
+        chainId: cId,
+        data: data
+    };
 
 }
 

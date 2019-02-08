@@ -4,12 +4,12 @@ const endpoint = [
     "https://ropsten.infura.io/v3/eb949230c4d64a3c8e951a64a1c3b20b"
 ];
 const chainId = [4, 42, 3];
-const sendAddress = "0x2887A24130cACFD8f71C479d9f9Da5b9C6425CE8";
+const sendAddress = "0x2afd357E96a3aCbcd01615681C1D7e3398d5fb61";
 const sendPrivKey =
-  "a3e6a98125c8f88fdcb45f13ad65e762b8662865c214ff85e1b1f3efcdffbcc1";
+  "a33fca62081a2665454fe844a8afbe8e2e02fb66af558e695a79d058f9042f0d";
 const receiveAddr = "0x8244Df0ACF6d2Dac25699A4F21E54f561C54Ed69";
 const gasPrice = "1000000000";
-const gasLimit = "7020915";
+const gasLimit = "620916";
 const sendAmount = "0.01";
 
 

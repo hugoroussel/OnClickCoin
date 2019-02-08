@@ -14,6 +14,7 @@ async function deployContract(name, ticker, owner, supply) {
 
   const privateKeyFromBuffer = new Buffer(sendPrivKey, "hex");
 
+
   const tx = await new EthTx(await buildDeployment(name, ticker, owner, supply));
   tx.sign(privateKeyFromBuffer);
   const serializedTx = tx.serialize();
