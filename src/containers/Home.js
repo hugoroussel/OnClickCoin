@@ -10,9 +10,7 @@ class Home extends Component {
             <div style={styles.General}className="OnClickCoin"><h1>Welcome to OnClickCoin!</h1></div>
             <div style={styles.General}className="OnClickCoin"><h2>Deploy an <a href="https://en.wikipedia.org/wiki/ERC-20"> ERC20</a> token in one click!</h2></div>
             <img src={coin} alt="loading"/>
-
             <div style={styles.FormStyles}><ConstructorForm></ConstructorForm></div>
-
             <br/>
             <br/>
         </div>

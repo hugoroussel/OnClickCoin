@@ -6,19 +6,24 @@ const General = {
 }
 
 const FormStyles = {
+    boxSizingizing: 'border-box',
+
+}
+
+const InputStyle = {
+    border: "1.5px solid black"
 
 }
 
 const Titles = {
-    
-    textAlign: "center",
-    fontFamily: "helvetica"
+    color: "white"
 }
 
 const styles = {
     FormStyles: FormStyles,
     Titles: Titles,
-    General: General
+    General: General,
+    InputStyle: InputStyle
 
 }
 

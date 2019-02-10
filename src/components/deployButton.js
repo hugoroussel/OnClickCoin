@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import deployContract from "../utils/deployContract";
 import deployMetaContract from "../utils/deployMetaContract";
-
+import styles from "../style/styles"
 class DeployButton extends Component {
   handleClick(event) {
     const formInfo = document.getElementById("constructorForm");
@@ -25,9 +25,11 @@ class DeployButton extends Component {
 
   render() {
     return (
+      <div style={styles.General}>
       <button onClick={this.handleClick.bind(this)}>
         Click here to deploy your new Contract!
       </button>
+      </div>
     );
   }
 }
