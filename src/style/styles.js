@@ -1,7 +1,7 @@
 const General = {
-    backgroundColor: "#656E77",
+    backgroundColor: "#ffd306",
     textAlign: "center",
-    fontFamily: "helvetica"
+    fontFamily: "Orbitron"
 
 }
 
